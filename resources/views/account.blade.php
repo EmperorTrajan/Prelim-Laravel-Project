@@ -5,9 +5,16 @@
 @endsection
 
 @section('content')
-      <section class="row new-post">
+  <section class="row new-post">
         <div class="col-md-6 col-md-offset-3">
             <header><h3>User Profile </h3></header>
+            @if (Storage::disk('local')->has($user->first_name . '-' . $user->id . '.jpg'))
+                <section class="row new-post">
+                    <div class="col-md-6 col-md-offset-3" align="right">
+                        <img src="{{ route('account.image', ['filename' => $user->first_name . '-' . $user->id . '.jpg']) }}" alt="" width="200" height="200" class="img-circle img-responsive">
+                     </div>
+                </section>
+            @endif
             <form action="{{ route('account.save') }}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="first_name">First Name</label>
@@ -34,11 +41,5 @@
             </form>
         </div>
     </section>
-    @if (Storage::disk('local')->has($user->first_name . '-' . $user->id . '.jpg'))
-        <section class="row new-post">
-            <div class="col-md-6 col-md-offset-3">
-                <img src="{{ route('account.image', ['filename' => $user->first_name . '-' . $user->id . '.jpg']) }}" alt="" class="img-responsive">
-            </div>
-        </section>
-    @endif
+    
 @endsection

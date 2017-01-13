@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <section class="row new-post">
+      <section class="row new-post">
         <div class="col-md-6 col-md-offset-3">
             <header><h3>User Profile </h3></header>
             <form action="{{ route('account.save') }}" method="post" enctype="multipart/form-data">
@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input class="form-control" type="text" name="password" id="password" value="{{ $user->password }}" id="password"> <!---->
+                    <input class="form-control" type="text" name="password" id="password"> <!---->
                 </div>
                 <div class="form-group">
                     <label for="image">Image (only .jpg)</label>

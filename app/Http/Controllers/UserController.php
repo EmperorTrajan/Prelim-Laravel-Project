@@ -15,16 +15,22 @@ class UserController extends Controller
         $this->validate($request, [
             'email' => 'required|email|unique:users',
             'first_name' => 'required|max:120',
+            'last_name' => 'required|max:100',
+            'phone' => 'required|max:15',
             'password' => 'required|min:4'
         ]);
 
         $email = $request['email'];
         $first_name = $request['first_name'];
+        $last_name = $request['last_name'];
+        $phone = $request['phone'];
         $password = bcrypt($request['password']);
 
         $user = new User();
         $user->email = $email;
         $user->first_name = $first_name;
+        $user->last_name = $last_name;
+        $user->phone = $phone;
         $user->password = $password;
 
         $user->save();

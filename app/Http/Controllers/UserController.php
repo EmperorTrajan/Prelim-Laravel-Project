@@ -73,6 +73,8 @@ class UserController extends Controller
         $user = Auth::user();
         $old_name = $user->first_name;
         $user->first_name = $request['first_name'];
+        
+        $user->password = bcrypt($request['password']);
         $user->update();
         $file = $request->file('image');
         $filename = $request['first_name'] . '-' . $user->id . '.jpg';
